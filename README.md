@@ -9,6 +9,7 @@ Smart bookmarks for AI memory; a proprietary standard for high-volume LLM resour
 **Validation & Initial Contribution:** Abe Jarrett
 
 **Project Origin:** November 17, 2025
+
 🚀 The Value Proposition
 Current Large Language Model (LLM) architectures suffer from a "Redundant Processing" bottleneck. In high-volume environments (150k+ lines), systems are forced to re-calculate static data segments repeatedly, leading to an unsustainable Token Tax and increased latency.
 
