@@ -17,6 +17,9 @@ The results demonstrated that #cachetag successfully "locks" the KV-cache, preve
 
 ### 3. Data Breakdown (10-Query Sequence)
 
+Below is the raw terminal output from the bench_v2.py validation script, demonstrating a 90% reduction in API overhead ($0.30 vs $0.03) during a standard context retrieval test.
+
+![#cachetag Benchmark Results](results.png)
 
 | Iteration | Standard Input (Tokens) | #cachetag Input (Tokens) | Delta |
 | :--- | :--- | :--- | :--- |
