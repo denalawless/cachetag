@@ -17,6 +17,7 @@ The results demonstrated that #cachetag successfully "locks" the KV-cache, preve
 
 ### 3. Data Breakdown (10-Query Sequence)
 
+
 | Iteration | Standard Input (Tokens) | #cachetag Input (Tokens) | Delta |
 | :--- | :--- | :--- | :--- |
 | Query 1 (Indexing) | 150,000 | 155,000 | +3% (Index Fee) |
