@@ -13,6 +13,11 @@ Smart bookmarks for AI memory; a proprietary standard for high-volume LLM resour
 🚀 The Value Proposition
 Current Large Language Model (LLM) architectures suffer from a "Redundant Processing" bottleneck. In high-volume environments (150k+ lines), systems are forced to re-calculate static data segments repeatedly, leading to an unsustainable Token Tax and increased latency.
 
+💡 Product Philosophy: The "Hashtag" Model
+The #cachetag protocol is inspired by the social media architecture that revolutionized data discovery. Just as social hashtags allow users to filter through global noise to find specific conversations, #cachetag allows LLMs to navigate massive datasets without "re-reading" the entire haystack.
+
+I've taken the most intuitive user experience for human discovery—the hashtag—and engineered it into a technical standard for AI memory efficiency.
+
 #cachetag solves this by establishing Smart Bookmarks for AI Memory. By implementing a deterministic framework for context persistence, the protocol allows models to bypass the re-read phase and achieve perfect recall of static datasets.
 
 📊 Performance Impact
