@@ -5,7 +5,7 @@ It intercepts prompt strings—specifically optimized within Claude Code environ
 Because it is stateless, it injects zero memory or lookup overhead, relying instead on Anthropic’s prefix-matching cache topology to guarantee a 90% drop in token compute costs. I've also had success with it in Open AI models and Gemini. 
 
 #Cachetag is..Smart bookmarks for AI memory; a proprietary standard for high-volume LLM resource optimization.
-(#cachetag™ v2.1) **Persistent workflow memory that slashes LLM compute costs by 60-90% and stops your AI from starting from scratch.**
+(#cachetag™ v2.1) **aka Persistent workflow memory that slashes LLM compute costs by 60-90% and stops your AI from starting from scratch.**
 
 **Lead Architect:** Dena Lawless
 
