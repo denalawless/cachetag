@@ -1,7 +1,9 @@
 # cachetag
 Founder's note:
 I solved a problem I was seeing everywhere - poor AI recall affecting productivity, multiple queries, rising costs and wasted planet resources. People saying "Add more compute!"..while cutting precious jobs. "Add more compute!" while not finding efficiencies. So I focused for an hour thinking about the social platforms I built and how they operate for search, and invented a solution first for myself, then tested it for larger data sets. I architected #cachetag as a stateless context protocol rather than a stateful database layer. 
+
 I've taken the most intuitive user experience for human discovery—the hashtag—and engineered it into a technical standard for AI memory efficiency.
+
 It intercepts prompt strings—specifically optimized within Claude Code environments—and separates static reference schemas from dynamic queries using regex segmentation. 
 Because it is stateless, it injects zero memory or lookup overhead, relying instead on Anthropic’s prefix-matching cache topology to guarantee a 90% drop in token compute costs. I've also had success with it in Open AI models and Gemini. 
 
