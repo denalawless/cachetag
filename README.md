@@ -2,7 +2,7 @@
 Smart bookmarks for AI memory; a proprietary standard for high-volume LLM resource optimization.
 #cachetag™ v2.1
 
-**The Proprietary Standard for High-Volume LLM Resource Optimization**
+**Persistent workflow memory that stops your AI from starting from scratch.**
 
 **Lead Architect:** Dena Lawless
 
