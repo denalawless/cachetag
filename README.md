@@ -17,17 +17,17 @@ Because it is stateless, it injects zero memory or lookup overhead, relying inst
 
 **Project Origin:** November 17, 2025
 
-🚀 The Value Proposition. Current Large Language Model (LLM) architectures suffer from a "Redundant Processing" bottleneck. In high-volume environments (150k+ lines), systems are forced to re-calculate static data segments repeatedly, leading to an unsustainable Token Tax and increased latency.
+🚀 The Value Proposition. Current Large Language Model (LLM) architectures suffer from a "Redundant Processing" bottleneck. In high-volume environments (150k+ lines), systems are forced to re-calculate static data segments repeatedly, leading to an unsustainable Token Tax and increased latency. Fix it, stop adding more compute and watching your costs eat your overhead. 
 
 💡 Product Philosophy. The "Hashtag" Model
-The #cachetag protocol is inspired by the social media architecture that revolutionized data discovery. Just as social hashtags allow users to filter through global noise to find specific conversations, #cachetag allows LLMs to navigate massive datasets without "re-reading" the entire haystack.
-
-#cachetag solves this by establishing Smart Bookmarks for AI Memory. By implementing a deterministic framework for context persistence, the protocol allows models to bypass the re-read phase and achieve perfect recall of static datasets.
+#cachetag allows LLMs to navigate massive datasets without "re-reading" the entire haystack. By implementing a deterministic framework for context persistence, the protocol allows models to bypass the re-read phase and achieve perfect recall of static datasets.
 
 📊 Performance Impact
-90% Cost Reduction: Eliminates redundant inference overhead in long-context sessions.
+60-90% Cost Reduction: Eliminates redundant inference overhead in long-context sessions. 
 
-Instantaneous Retrieval: Sub-10ms state recognition via namespace-scoped logic.
+Instantaneous Retrieval: Sub-10ms state recognition via namespace-scoped logic. 
+
+Expected tradeoff: Latency as the workload scales up. Right now it's near Zero. 
 
 Architecture Agnostic: Optimized for integration with Anthropic (Claude), Google (Gemini), and OpenAI (GPT) infrastructure.
 
