@@ -38,6 +38,8 @@ The mathematical logic of the #cachetag™ protocol has been validated via a loc
 | **Standard Request Baseline** | 5.43s | $0.3000 | True |
 | **#cachetag™ Optimized Pipeline** | 5.33s | $0.0300 | True (100% Recall) |
 
+![#cachetag Protocol Validation Baseline](results.png)
+
 **Operational Analysis & Strategic Trade-Offs:**
 *   **Zero-Latency Tier:** As demonstrated in this production query test, by clipping redundant context blocks before they saturate the active context window, total round-trip processing latency is reduced by 100ms—establishing a zero-latency penalty profile alongside a deterministic **90% optimization in server-side resource costs**.
 *   **High-Volume Archival Tier:** While target deployments aim for a standard range of **60–90% aggregate cost savings**, structural business judgment dictates that enterprise clients will actively trade processing latency (up to 30 seconds for heavy, asynchronous, or multi-agent background batches) in exchange for deep compute cost mitigation, reduced resource waste, and consistent deterministic outputs.
