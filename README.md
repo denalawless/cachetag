@@ -13,7 +13,7 @@ Because it is stateless, it injects zero memory or lookup overhead, relying inst
 
 **Lead Architect:** Dena Lawless
 
-**Validation & Initial Contribution:** Abe Jarrett
+**Validation Contribution:** Abe Jarrett
 
 **Project Origin:** November 17, 2025
 
