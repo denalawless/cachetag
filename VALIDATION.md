@@ -51,13 +51,15 @@ Standard
 0.097s
 
 
-Headline results (blended across first-time misses and cache hits):
+**Headline results (blended across first-time misses and cache hits):**
 
 93.3% of #cachetag calls avoided the LLM entirely (70 of 75)
 92.8% reduction in total tokens
 92.0% reduction in latency
 
-Of the 5 unavoidable first-time queries (every topic must be seen once before it can be cached), all 5 were correctly identified as misses and fetched live. Zero cache entries expired during this test window, since 99 seconds is far shorter than the 30-day TTL — expiry-and-refresh behavior has been unit-tested separately but not yet exercised in a live end-to-end run.
+Of the 5 unavoidable first-time queries (every topic must be seen once before it can be cached), all 5 were correctly identified as misses and fetched live. 
+Zero cache entries expired during this test window, since 99 seconds is far shorter than the 30-day TTL — expiry-and-refresh behavior has been unit-tested separately but not yet exercised in a live end-to-end run.
+
 Known Limitations (stated plainly)
 Small corpus (5 topics) and synthetic content — not yet tested against real production query volume or variety.
 Single test run, single machine, single day. Numbers should be replicated across multiple independent runs before being treated as a stable baseline.
@@ -68,6 +70,7 @@ The blended reduction percentage is a function of replay count: more repeat quer
 
 Raw log (results_raw.jsonl) of Sept 12, 2026, and full manifest (summary_report.json) available on request. Implementation details of the local caching/retrieval layer are not included in this brief.
 
+Former test:
 
 # #cachetag™ Validation Report (v1.0.0)
 **Subject:** 150k-Line Context Optimization Study  
