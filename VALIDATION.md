@@ -13,6 +13,7 @@ Two conditions were run head-to-head on identical queries:
 
 Standard — every query is sent to the LLM in full, every time. No memory, no persistence.
 #cachetag — the first time a topic is queried, it's sent to the LLM in full (same as standard) and the answer is cached locally with a timestamp. Every later query on that same topic is checked against a time-to-live (TTL) window: if still fresh, the answer is served directly from local storage and the LLM is not called at all; if the TTL has expired, it's treated as a miss and re-fetched from the LLM.
+
 Test Details
 Model tested
 claude-sonnet-5
