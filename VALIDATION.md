@@ -1,6 +1,7 @@
 **#CacheTag Benchmark — Test Brief** 
 
 Status: Real API calls, real token counts, no estimated or illustrative figures.
+
 Test date: September 12, 2026
 Model: Claude-Sonnet 5 (with future models to be tested!)
 
