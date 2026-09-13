@@ -6,7 +6,7 @@ Test date: September 12, 2026
 Model: Claude-Sonnet 5 (with future models to be tested!)
 
 
-Test Case
+**Test Case**
 Does routing repeat queries through a local recall layer (instead of resending full context to an LLM every time) reduce API calls, tokens, and latency — while correctly falling back to a live LLM call for new or expired content?
 
 Two conditions were run head-to-head on identical queries:
