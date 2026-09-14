@@ -1,73 +1,90 @@
 # SPEC.md: The #cachetag™ Protocol (v1.0.0)
-**The Definitive Standard for Content-Addressable Semantic Addressing**
 
-* **Author:** Dena Lawless
-* **Status:** Implementation Ready (2026-03-30)
-* **Reference:** #cachetag
+**A Standard for Content-Addressable, Tag-Based LLM Context Recall**
+
+**Author:** Dena Lawless
+**Status:** Concept & Reference Implementation — core recall mechanism benchmarked; full protocol not yet production-deployed
+**Reference:** #cachetag
 
 ---
 
 ## 1. Abstract
-The #cachetag protocol defines a standardized syntax for modularizing LLM context. It enables "Random Access" to large context windows, reducing token waste by up to 90% by preventing redundant KV-cache invalidation.
 
-## 2. Syntax Definition
-A #cachetag block is defined by a semantic identifier followed by content enclosed in brackets.
-
-* **Tag:** `#` + `snake_case_identifier`
-* **Content:** `[` + `UTF-8 Content` + `]`
-* **Example:** `#legal_policy_v2[The organization shall...]`
-
-### 2.1 Namespace Scoping (Enterprise Addressing)
-To support multi-tenant environments and large-scale agentic workflows, #cachetag supports optional namespacing to prevent KV-cache collisions.
-
-* **Syntax:** `#` + `[namespace]` + `:` + `[identifier]` + `[` + `content` + `]`
-* **Example:** `#project_alpha:legal_brief[The terms...]`
-* **Resolution Logic:** If no namespace is provided, the parser defaults to a global or session scope. This ensures collision-free "Random Access" across massive, overlapping datasets.
-
-## 3. The "Token Tax" Optimization Logic
-Current KV-caching is linear. If the first 10 tokens of a 100k prompt change, the entire cache is discarded. #cachetag-compliant parsers move dynamic user instructions to the end of the call while referencing static #cachetag modules at the beginning.
-
-### Financial Impact (2026 Estimates)
-
-### 3.1 Empirical Validation & Operational Trade-Offs
-
-The mathematical logic of the #cachetag™ protocol has been validated via a local terminal environment running high-density enterprise conversational datasets against a standard LLM production gateway.
-
-| Execution Mode | Latency (s) | Transactional Token Cost | Success Delta |
-| :--- | :--- | :--- | :--- |
-| **Standard Request Baseline** | 5.43s | $0.3000 | True |
-| **#cachetag™ Optimized Pipeline** | 5.33s | $0.0300 | True (100% Recall) |
-
-![#cachetag Protocol Validation Baseline](results.png)
-
-### 3.2 Test Environment & Reproducibility Metrics
-
-To ensure strict engineering validation, the performance metrics captured in the baseline runtime image reflect the following local environment controls:
-
-*   **Target Core LLM Engine:** Anthropic Claude 3.5 Sonnet (API Integration Payload)
-*   **Prompt Pipeline Configuration:** 
-    *   *Standard Iteration:* Raw context frame containing repetitive 8,000-token enterprise architecture documentation and nested multi-turn agent instructions.
-    *   *#cachetag™ Iteration:* Stateless extraction of reference frames compiled into a single static namespace-scoped dictionary pointer, pushing ephemeral strings to query-end.
-*   **Hyperparameters:** Temperature: `0.0` (Locked down for perfect deterministic replication test consistency); Max Tokens: `4,096`.
-*   **Host Environment Specifications:** Python 3.13.2 runtime executed natively on an Apple Silicon Darwin architecture (M-Series unified memory structure).
-
-No client-side or server-side memory leaks were detected during concurrent query loops. Execution success flags returned `True` with absolute parity across semantic evaluation metrics.
-
-**Operational Analysis & Strategic Trade-Offs:**
-*   **Zero-Latency Tier:** As demonstrated in this production query test, by clipping redundant context blocks before they saturate the active context window, total round-trip processing latency is reduced by 100ms—establishing a zero-latency penalty profile alongside a deterministic **90% optimization in server-side resource costs**.
-*   **High-Volume Archival Tier:** While target deployments aim for a standard range of **60–90% aggregate cost savings**, structural business judgment dictates that enterprise clients will actively trade processing latency (up to 30 seconds for heavy, asynchronous, or multi-agent background batches) in exchange for deep compute cost mitigation, reduced resource waste, and consistent deterministic outputs.
-
-
-
-## 4. Addressing & Retrieval
-Models are instructed via System Prompt to treat #tags as unique URI pointers.
-* **Command:** *Retrieve specific clauses from #contract_2026.*
-* **Mechanism:** Instead of re-reading the full context, the model uses the #cachetag index to focus self-attention on specific token offsets.
-
-## 5. Compliance Levels
-* **L1 (Basic):** Plain text modularization via regex.
-* **L2 (Optimized):** Rust-based streaming parsing for sub-5ms latency.
-* **L3 (Protocol):** Native integration via MCP (Model Context Protocol).
+The #cachetag protocol defines a syntax for tagging static, reusable blocks of content within an LLM workflow. Content tagged this way can be recognized on repeat queries and served from a local recall store instead of being re-sent to the model — reducing redundant inference calls, tokens, and latency. In benchmark testing, this approach eliminated 93.3% of repeat-query model calls (see Section 3).
 
 ---
+
+## 2. Syntax Definition
+
+A #cachetag block is defined by a semantic identifier followed by content enclosed in brackets.
+
+- **Tag:** `#` + `snake_case_identifier`
+- **Content:** `[` + UTF-8 content + `]`
+- **Example:** `#legal_policy_v2[The organization shall...]`
+
+### 2.1 Namespace Scoping (proposed, not yet implemented)
+
+To support multi-tenant environments, #cachetag is designed to support optional namespacing to prevent identifier collisions between unrelated tagged content.
+
+- **Syntax:** `#[namespace]:[identifier][content]`
+- **Example:** `#project_alpha:legal_brief[The terms...]`
+- **Resolution logic:** If no namespace is provided, the parser defaults to a global scope.
+
+*Status: this is a designed extension to the syntax. No namespace-isolation logic has been built or tested — do not represent this as functioning.*
+
+---
+
+## 3. Empirical Validation
+
+Unlike earlier drafts of this spec, the figures below come directly from a real, logged benchmark — not an estimate or a described-but-unrun test.
+
+**Test conditions:**
+- **Model:** `claude-sonnet-5`
+- **Corpus:** 5 distinct tagged content blocks, replayed 15 times each (150 total logged events)
+- **TTL:** 30 days (cache entries auto-expire and refresh via a live model call once past this window)
+- **Token counts:** taken directly from the API's `response.usage` field on every call — not estimated
+
+**Results:**
+
+| Metric | Result |
+|---|---|
+| Repeat-query model calls avoided | 93.3% |
+| Total-token reduction (blended, hits + misses) | 92.8% |
+| Latency reduction (blended) | 92.0% |
+| Cache hit latency | ~0ms (local lookup) vs. ~1.2s per live model call |
+
+Full raw results (`results_raw.jsonl`) and run manifest available on request.
+
+**Known limitations, stated plainly:**
+- Small corpus (5 tags), single model, single test session — not yet validated at high-volume production scale
+- No TTL expiry event occurred within this test window (99 seconds; TTL is 30 days) — expiry/refresh logic is unit-tested in isolation but not yet observed in a live, time-elapsed run
+- Not yet tested against GPT or Gemini
+
+---
+
+## 4. Addressing & Retrieval
+
+The current implementation checks incoming queries against tagged entries in a local recall store before deciding whether to call the model:
+
+- **On a hit** (tag exists, within TTL): the stored answer is returned directly. The model is not called.
+- **On a miss** (tag not seen before, or past TTL): the query is sent to the model normally, and the result is stored under that tag for future recall.
+
+*Note: this is retrieval via a local key-value lookup, not a mechanism that directs the model's internal attention to specific token offsets — no such capability is implemented or claimed.*
+
+---
+
+## 5. Compliance Levels (roadmap, not current state)
+
+These describe the intended maturity path for a production implementation. **None beyond L1 currently exist.**
+
+- **L1 (Basic):** Plain-text tag modularization via a local script — *this is the level that has been built and benchmarked.*
+- **L2 (Optimized):** A faster, production-grade parser — *not yet built.*
+- **L3 (Protocol):** Native integration as a published, interoperable protocol (e.g., via MCP) — *aspirational; requires a published interface spec that does not yet exist.*
+
+---
+
+## 6. Intellectual Property Notice
+
+This document, together with the accompanying repository, serves as a formal public declaration of Prior Art, dated November 17, 2025. The #cachetag protocol and its architectural logic are proprietary. Unauthorized use, reproduction, reverse engineering, or commercial implementation is strictly prohibited.
+
 *Saved under #cachetag*
