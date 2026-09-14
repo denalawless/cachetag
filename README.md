@@ -2,11 +2,11 @@
 
 ## Founder's Note
 
-I solved a problem I was seeing everywhere — poor AI recall affecting productivity, repeated queries, rising costs, and wasted resources. People kept saying "add more compute" while cutting jobs and while not finding actual efficiencies. I thought about the social platforms I've built and how they handle search and discovery, and applied that thinking to a new problem: reducing redundant inference. I've taken the most intuitive interface for human discovery — the hashtag — and applied it to a technical standard for AI memory efficiency.
+I solved a problem I was seeing everywhere — terrible AI recall affecting productivity, repeated queries, rising costs, and wasted resources. People kept saying "add more compute" while cutting jobs and while not finding actual efficiencies. I thought about the social platforms I've built and how they handle search and discovery, and applied that thinking to a new problem: reducing redundant inference. I've taken the most intuitive interface for social discovery — the hashtag — and applied it to a technical standard for AI memory efficiency.
 
 #cachetag is a **local recall layer**: a persistent, tag-addressed store that sits in front of the model. It checks known queries against local memory before calling the LLM. On a hit, the model is not called at all — zero tokens, zero API cost, near-instant response. On a miss (new content, or content past its freshness window), it calls the model normally and stores the result for next time.
 
-**(#cachetag™ v1)** — *Persistent local recall that eliminates redundant LLM calls and stops your AI from starting from scratch on repeat queries.*
+**(#cachetag™ v1)** — *A persistent, stateful recall layer for high-volume LLM workflows — a proprietary standard for reducing redundant inference cost.
 
 **Lead Architect:** Dena Lawless
 **Validation Contribution:** Abe Jarrett
