@@ -6,9 +6,7 @@ I solved a problem I was seeing everywhere — poor AI recall affecting producti
 
 #cachetag is a **local recall layer**: a persistent, tag-addressed store that sits in front of the model. It checks known queries against local memory before calling the LLM. On a hit, the model is not called at all — zero tokens, zero API cost, near-instant response. On a miss (new content, or content past its freshness window), it calls the model normally and stores the result for next time.
 
-**#cachetag is:** a persistent, stateful recall layer for high-volume LLM workflows — a proprietary standard for reducing redundant inference cost.
-
-**(#cachetag™ v2.2)** — *Persistent local recall that eliminates redundant LLM calls and stops your AI from starting from scratch on repeat queries.*
+**(#cachetag™ v1)** — *Persistent local recall that eliminates redundant LLM calls and stops your AI from starting from scratch on repeat queries.*
 
 **Lead Architect:** Dena Lawless
 **Validation Contribution:** Abe Jarrett
