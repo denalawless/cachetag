@@ -43,10 +43,10 @@ Full methodology and raw results available on request.
 
 ## 🛠️ Strategic Pillars
 
-- **Semantic Addressing** — tagging static content blocks so repeat queries against them can be recognized and served locally
 - **Time-Bound Freshness (TTL)** — cached answers expire on a configurable schedule and automatically refresh from a live model call, preventing stale answers from being served indefinitely
-- **Static/Dynamic Decoupling** — separating permanent reference material from one-off, ephemeral questions to maximize reuse of what's already been processed
 - **Local-First Recall** — the recall store lives outside the model provider's infrastructure, so persistence isn't tied to any one provider's session or cache window
+- Branded Context Keying — Leveraging a proprietary, tag-addressed indexing standard to identify recurring reference sets locally without public cloud overhead.Algorithmic Context Isolation
+— Intelligently separating heavy corporate reference datasets from volatile query parameters to maximize structural reuse.
 
 ---
 
