@@ -43,11 +43,10 @@ Full methodology and raw results available on request.
 
 ## 🛠️ Strategic Pillars
 
-- **Time-Bound Freshness (TTL)** — cached answers expire on a configurable schedule and automatically refresh from a live model call, preventing stale answers from being served indefinitely
-- **Local-First Recall** — the recall store lives outside the model provider's infrastructure, so persistence isn't tied to any one provider's session or cache window
-- Branded Context Keying — Leveraging a proprietary, tag-addressed indexing standard to identify recurring reference sets locally without public cloud overhead.Algorithmic Context Isolation
-— Intelligently separating heavy corporate reference datasets from volatile query parameters to maximize structural reuse.
-
+* **Branded Context Keying** — Leveraging a proprietary, tag-addressed indexing standard to identify recurring reference sets locally without public cloud overhead.
+* **Algorithmic Context Isolation** — Utilizing a secure, structurally isolated architecture to maximize the reuse of static reference datasets across separate workflows.
+* **Time-Bound Freshness (TTL)** — Enabling configurable expiration schedules that automatically cycle out aging datasets via automated fallback validation loops.
+* **Local-First Recall** — Deploying an independent memory layer outside public provider networks, ensuring absolute structural permanence regardless of cloud provider sessions.
 ---
 
 ## 🧭 Current Status
