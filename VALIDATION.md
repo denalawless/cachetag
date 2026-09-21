@@ -29,10 +29,10 @@ Two deployment profiles were executed sequentially against identical context vol
 
 The figures below are computed directly from the raw, unedited validation log:
 
-| Profile | Events | External calls | Local completions | Tokens | Mean latency |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Standard** | 75 | 75 | 0 | Baseline | 1.208s |
-| **#cachetag** | 75 | 5 | 70 | -92.8% | 0.097s |
+| Profile   | Events | External calls | Local completions | Tokens  | Mean latency |
+|-----------|--------|----------------|-------------------|---------|--------------|
+| Standard  | 75     | 75             | 0                 | Baseline| 1.208s       |
+| #cachetag | 75     | 5              | 70                | −92.8%  | 0.097s       |
 
 ---
 
