@@ -34,7 +34,7 @@ The figures below come directly from a controlled, logged benchmark using real A
 
 ---
 
-## 4. Headline Results
+## 4. Results
 Blended performance metrics across baseline context registration and subsequent local recall loops yielded the following validated metrics:
 
 * **93.3% of optimization cycles completely avoided cloud inference calls** (resolving 70 out of 75 queries entirely at the local gate).
