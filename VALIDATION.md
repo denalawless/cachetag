@@ -53,7 +53,6 @@ Blended performance metrics across baseline context registration and subsequent 
 
 ## 5. Architectural Boundaries & Scope
 - **Scale Profiles:** Evaluation verified at small-corpus scale. Transitioning to high-line-count enterprise production scale (100k+ lines) is an active roadmap item.
-- **Provider Agnosticism:** Cross-model verification frameworks for alternative foundational model providers (such as GPT or Gemini) remain under active internal development.
 - **Rotation Validation:** Expiration paths and state-recycling logic have been verified strictly in isolated logic testing; observation inside long-horizon live windows is ongoing.
 
 ---
