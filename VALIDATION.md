@@ -1,7 +1,7 @@
 # #CacheTag Benchmark — Benchmark Brief
 
 **Status:** Real API response metrics on the baseline condition; recall paths resolved natively without a cloud model call.  
-**Execution Profile:** Verified via continuous session testing.  
+**Execution Profile:** One measured run, 15 continuous replay cycles.  
 **Target Engine:** Claude Sonnet 5 (Executed: Sept 12, 2026 | Run ID: a8cfc6b6)  
 
 ---
@@ -29,17 +29,17 @@ Two deployment profiles were executed sequentially against identical context vol
 
 The figures below are computed directly from the raw, unedited validation log:
 
-| Deployment Profile | Total Logged Events | External API Calls Executed | Local/Perimeter Completions | Token Processing Volume | Mean Ingestion Latency |
+| Profile | Events | External calls | Local completions | Tokens | Mean latency |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Standard Ingestion** | 75 | 75 | 0 | Baseline (100% Cost) | 1.208s |
-| **#cachetag Standard** | 75 | 5 | 70 | Optimized (-92.8%) | 0.097s |
+| **Standard** | 75 | 75 | 0 | Baseline | 1.208s |
+| **#cachetag** | 75 | 5 | 70 | -92.8% | 0.097s |
 
 ---
 
-## 4. Headline Results & Systemic Behavior
+## 4. Results
 Blended performance metrics across baseline context registration and subsequent recall loops yielded the following validated metrics:
 
-* **93.3% of optimization cycles completely avoided cloud inference calls** (resolving 70 out of 75 queries entirely at the gateway).
+* **93.3% of #cachetag calls avoided the cloud model entirely** (resolving 70 out of 75 queries via localized recall).
 * **92.8% net reduction in cumulative token overhead**, protecting core operational infrastructure from data inflation.
 * **92.0% systemic drop in processing latency**, compressing data delivery timelines down to native environment speeds.
 
@@ -47,7 +47,7 @@ Blended performance metrics across baseline context registration and subsequent 
 * **Accurate Boundary Classification:** 100% of novel topics were correctly classified as unpinned and served nothing stale, ensuring clean boundary validation.
 * **Version-Locked Consistency:** The architecture enforces strict, version-locked consistency computed per run, ensuring the exact same pinned answer is delivered across identical replays.
 * **Auditability & Traceability:** Every context lookup is strictly key-scoped and automatically written to an immutable, append-only audit log for verification.
-* **Defensible Cache Expiry:** Content entries bypass the model and persist until one of three exact lifecycle events occurs: the source fingerprint changes, the entry is explicitly withheld, or the validity window passes.
+* **Defensible Cache Expiry:** A pinned entry is served without a model call until one of three lifecycle events occurs: the source fingerprint changes, the entry is explicitly withheld, or the validity window passes.
 
 ---
 
