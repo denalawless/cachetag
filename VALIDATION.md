@@ -1,5 +1,4 @@
-# #CacheTag Benchmark — Test Brief
-# VALIDATION.md: #cachetag™ Empirical Benchmark Brief
+# #CacheTag Benchmark — Benchmark Brief
 
 **Status:** Physical API execution statistics; zero simulated data points.  
 **Execution Profile:** Verified continuous live environment testing.  
